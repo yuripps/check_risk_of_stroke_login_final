@@ -107,10 +107,12 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         }
         String name = textInputEditTextEmail.getText().toString().trim();
         String password = textInputEditTextPassword.getText().toString().trim();
+        //String ng = textInputEditTextNgrok.getText().toString().trim();
 
         if (databaseHelper.checkUser(name, password)) {
             PreferenceUtils.saveName(name, this);
-            databaseHelper.add(name);
+            databaseHelper.addName(name);
+            //databaseHelper.addNg(ng);
             PreferenceUtils.savePassword(password, this);
             Intent accountsIntent = new Intent(activity, UsersActivity.class);
             accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());

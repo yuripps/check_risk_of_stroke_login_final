@@ -156,13 +156,22 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
         next.setEnabled(true);
         Toast.makeText(getApplicationContext(), "Playing audio", Toast.LENGTH_SHORT).show();
     }
+
+    public void rename(){
+        String name = "1.wav";
+        File sr = Environment.getExternalStorageDirectory();
+        File from = new File(sr,name);
+        File to = new File(sr,db1.getName()+".wav");
+        from.renameTo(to);
+    }
+
     public void up_sound(View view){
         Toast.makeText(getBaseContext(), "อัพโหลดไฟล์เสียง", Toast.LENGTH_LONG).show();
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();
         String path = Environment.getExternalStorageDirectory()+"/"+"record_"+formatter.format(now)+".wav";;
         Ion.with(this)
-                .load("http://357360ef.ngrok.io/pro-android/sound.php")
+                .load("http://ea0fd6ad.ngrok.io/pro-android/upload/sound/upload.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -170,6 +179,7 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
                     public void onCompleted(Exception e, String result) {
                         visitCount++;
                         if(visitCount > 4){
+                            rename();
                             process();
 
                         }
@@ -184,7 +194,7 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
 
     public void process() {
         Ion.with(this)
-                .load("http://357360ef.ngrok.io/pro-android/sound/first_test.php")
+                .load("http://ea0fd6ad.ngrok.io/pro-android/upload/sound/firstsound.php")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override

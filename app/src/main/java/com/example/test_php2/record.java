@@ -81,7 +81,8 @@ public class record extends AppCompatActivity implements View.OnClickListener{
                 }
                 break;
             case R.id.button4:
-                up_sound(v);
+
+                up_sound1(v);
                 break;
             default:
                 break;
@@ -157,18 +158,51 @@ public class record extends AppCompatActivity implements View.OnClickListener{
         next.setEnabled(true);
         Toast.makeText(getApplicationContext(), "Playing audio", Toast.LENGTH_SHORT).show();
     }
-    public void up_sound(View view){
+
+    public void rename(){
+        SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
+        Date now = new Date();
+        String name = "record_"+formatter.format(now)+".wav";
+        File sr = Environment.getExternalStorageDirectory();
+        File from = new File(sr,name);
+        File to = new File(sr,db1.getName()+".wav");
+        from.renameTo(to);
+    }
+
+    public void up_sound1(final View view){
         Toast.makeText(getBaseContext(), "อัพโหลดไฟล์เสียง", Toast.LENGTH_LONG).show();
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();
-        String path = Environment.getExternalStorageDirectory()+"/"+"record_"+formatter.format(now)+".wav";;
+        String name = (Environment.getExternalStorageDirectory()+"/"+db1.getName()+".wav");
+        String path = (name);
         Ion.with(this)
-                .load("http://357360ef.ngrok.io/pro-android/sound.php")
-                .setMultipartFile("upload_file", new File(path))
+                .load("http://ea0fd6ad.ngrok.io/pro-android/upload/sound/upload1.php")
+                .setMultipartFile("upload_file", new File(name))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
+
+                        up_sound2(view);
+                    }
+                });
+    }
+
+
+    public void up_sound2(View view){
+        Toast.makeText(getBaseContext(), "อัพโหลดไฟล์เสียง", Toast.LENGTH_LONG).show();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
+        Date now = new Date();
+        String name = (Environment.getExternalStorageDirectory()+"/"+"record_"+formatter.format(now)+".wav");
+        String path = (name);
+        Ion.with(this)
+                .load("http://ea0fd6ad.ngrok.io/pro-android/upload/sound/upload2.php")
+                .setMultipartFile("upload_file", new File(name))
+                .asString()
+                .setCallback(new FutureCallback<String>() {
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+                        rename();
                         process();
                     }
                 });
@@ -182,7 +216,7 @@ public class record extends AppCompatActivity implements View.OnClickListener{
 
     public void process(){
         Ion.with(this)
-                .load("http://357360ef.ngrok.io/pro-android/sound/test.php")
+                .load("http://ea0fd6ad.ngrok.io/pro-android/sound/test.php")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override

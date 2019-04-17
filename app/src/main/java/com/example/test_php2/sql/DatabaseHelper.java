@@ -28,6 +28,10 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
     private static final String COLUMN_ID = "user_id";
     private static final String COLUMN_NAME = "user_name";
 
+    private static final String TABLE_NGROK = "ng";
+    private static final String COLUMN_NG_ID = "user_id";
+    private static final String COLUMN_NG_PATH = "user_path";
+
 
     private String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_USER + "("
             + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_USER_NAME + " TEXT,"
@@ -37,14 +41,17 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
 
 
 
-//    private static final String TABLE_RECENT = "recent";
-//    private static final String COLUMN_ID = "user_id";
-//    private static final String COLUMN_NAME = "user_name";
-
     private String CREATE_RECENT_TABLE = "CREATE TABLE " + TABLE_RECENT + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_NAME + " TEXT" + ")";
 
     private String DROP_RECENT_TABLE = "DROP TABLE IF EXISTS " + TABLE_RECENT;
+
+    //-----------------------------------------------------------------------------------//
+
+    private String CREATE_NGROK_TABLE = "CREATE TABLE " + TABLE_NGROK + "("
+            + COLUMN_NG_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_NG_PATH + " TEXT" + ")";
+
+    private String DROP_NGROK_TABLE = "DROP TABLE IF EXISTS " + TABLE_NGROK;
 
     public DatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -53,6 +60,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db){
         db.execSQL(CREATE_USER_TABLE);
         db.execSQL(CREATE_RECENT_TABLE);
+        db.execSQL(CREATE_NGROK_TABLE);
     }
 
 
@@ -61,6 +69,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
     public  void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
         db.execSQL(DROP_USER_TABLE);
         db.execSQL(DROP_RECENT_TABLE);
+        db.execSQL(DROP_NGROK_TABLE);
         onCreate(db);
     }
 
@@ -75,11 +84,19 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
         db.close();
     }
 
-    public void add(String name){
+    public void addName(String name){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, name);
         db.insert(TABLE_RECENT, null, values);
+        db.close();
+    }
+
+    public void addNg(String ng){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NG_PATH, ng);
+        db.insert(TABLE_NGROK, null, values);
         db.close();
     }
 

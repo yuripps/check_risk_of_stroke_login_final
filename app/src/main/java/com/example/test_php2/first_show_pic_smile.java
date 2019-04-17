@@ -96,22 +96,22 @@ public class first_show_pic_smile extends AppCompatActivity {
         String path = (Environment.getExternalStorageDirectory()+"/"+count_st+".jpg");
         //visitCount++;
         Ion.with(this)
-                .load("http://357360ef.ngrok.io/pro-android/smile.php")
+                .load("http://ea0fd6ad.ngrok.io/pro-android/upload/smile/upload.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
-                        if(visitCount <= 4){
-                            Intent intent = new Intent(first_show_pic_smile.this,first_smile.class);
-                            startActivity(intent);
-                        }
-
-                        else {
-                            process();
-//                            Intent intent = new Intent(first_show_pic_smile.this,first_arm.class);
+//                        if(visitCount <= 4){
+//                            Intent intent = new Intent(first_show_pic_smile.this,first_smile.class);
 //                            startActivity(intent);
-                        }
+//                        }
+//
+//                        else {
+//                            process();
+////                            Intent intent = new Intent(first_show_pic_smile.this,first_arm.class);
+////                            startActivity(intent);
+//                        }
                     }
                 });
     }
@@ -149,7 +149,7 @@ public class first_show_pic_smile extends AppCompatActivity {
 
     public void process(){
         Ion.with(this)
-                .load("http://357360ef.ngrok.io/pro-android/smile/first_test.php")
+                .load("http://ea0fd6ad.ngrok.io/pro-android/upload/smile/firstsmile.php")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
