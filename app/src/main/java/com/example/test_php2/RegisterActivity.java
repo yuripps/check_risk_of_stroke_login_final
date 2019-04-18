@@ -114,7 +114,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             user.setPassword(textInputEditTextPassword.getText().toString().trim());
 
             databaseHelper.addUser(user);
-            databaseHelper.add(name);
+            databaseHelper.addName(name);
 
             // Snack Bar to show success message that record saved successfully
             Snackbar.make(nestedScrollView, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();

@@ -58,102 +58,102 @@ public class DatabaseHelper2  extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_TABLE_SMILE);
-        ContentValues sm = new ContentValues();
-        sm.put(COL_DIST, 2.18);
-        sm.put(COL_NAME, "yuriyuripps");
-        db.insert(SMILE_TABLE, null, sm);
-
-        sm = new ContentValues();
-        sm.put(COL_DIST, 2.15);
-        sm.put(COL_NAME, "yuriyuripps");
-        db.insert(SMILE_TABLE, null, sm);
-
-        sm = new ContentValues();
-        sm.put(COL_DIST, 0.05);
-        sm.put(COL_NAME, "yuriyuripps");
-        db.insert(SMILE_TABLE, null, sm);
-
-        sm = new ContentValues();
-        sm.put(COL_DIST, 7.48);
-        sm.put(COL_NAME, "yuriyuripps");
-        db.insert(SMILE_TABLE, null, sm);
-
-        sm = new ContentValues();
-        sm.put(COL_DIST, 2.00);
-        sm.put(COL_NAME, "yuriyuripps");
-        db.insert(SMILE_TABLE, null, sm);
-
-        sm = new ContentValues();
-        sm.put(COL_DIST, 2.00);
-        sm.put(COL_NAME, "yuriyuripps");
-        db.insert(SMILE_TABLE, null, sm);
+//        ContentValues sm = new ContentValues();
+//        sm.put(COL_DIST, 2.18);
+//        sm.put(COL_NAME, "yuriyuripps");
+//        db.insert(SMILE_TABLE, null, sm);
+//
+//        sm = new ContentValues();
+//        sm.put(COL_DIST, 2.15);
+//        sm.put(COL_NAME, "yuriyuripps");
+//        db.insert(SMILE_TABLE, null, sm);
+//
+//        sm = new ContentValues();
+//        sm.put(COL_DIST, 0.05);
+//        sm.put(COL_NAME, "yuriyuripps");
+//        db.insert(SMILE_TABLE, null, sm);
+//
+//        sm = new ContentValues();
+//        sm.put(COL_DIST, 7.48);
+//        sm.put(COL_NAME, "yuriyuripps");
+//        db.insert(SMILE_TABLE, null, sm);
+//
+//        sm = new ContentValues();
+//        sm.put(COL_DIST, 2.00);
+//        sm.put(COL_NAME, "yuriyuripps");
+//        db.insert(SMILE_TABLE, null, sm);
+//
+//        sm = new ContentValues();
+//        sm.put(COL_DIST, 2.00);
+//        sm.put(COL_NAME, "yuriyuripps");
+//        db.insert(SMILE_TABLE, null, sm);
 
 
         //-------------------------------------------------------------
 
         db.execSQL(SQL_CREATE_TABLE_ARM);
-        ContentValues am = new ContentValues();
-        am.put(COL_DIST, 35.00);
-        am.put(COL_NAME, "yuriyuripps");
-        db.insert(ARM_TABLE, null, am);
-
-        am = new ContentValues();
-        am.put(COL_DIST, 30.00);
-        am.put(COL_NAME, "yuriyuripps");
-        db.insert(ARM_TABLE, null, am);
-
-        am = new ContentValues();
-        am.put(COL_DIST, 32.00);
-        am.put(COL_NAME, "yuriyuripps");
-        db.insert(ARM_TABLE, null, am);
-
-        am = new ContentValues();
-        am.put(COL_DIST, 33.00);
-        am.put(COL_NAME, "yuriyuripps");
-        db.insert(ARM_TABLE, null, am);
-
-        am = new ContentValues();
-        am.put(COL_DIST, 36.00);
-        am.put(COL_NAME, "yuriyuripps");
-        db.insert(ARM_TABLE, null,am);
+//        ContentValues am = new ContentValues();
+//        am.put(COL_DIST, 35.00);
+//        am.put(COL_NAME, "yuriyuripps");
+//        db.insert(ARM_TABLE, null, am);
+//
+//        am = new ContentValues();
+//        am.put(COL_DIST, 30.00);
+//        am.put(COL_NAME, "yuriyuripps");
+//        db.insert(ARM_TABLE, null, am);
+//
+//        am = new ContentValues();
+//        am.put(COL_DIST, 32.00);
+//        am.put(COL_NAME, "yuriyuripps");
+//        db.insert(ARM_TABLE, null, am);
+//
+//        am = new ContentValues();
+//        am.put(COL_DIST, 33.00);
+//        am.put(COL_NAME, "yuriyuripps");
+//        db.insert(ARM_TABLE, null, am);
+//
+//        am = new ContentValues();
+//        am.put(COL_DIST, 36.00);
+//        am.put(COL_NAME, "yuriyuripps");
+//        db.insert(ARM_TABLE, null,am);
         //-------------------------------------------------------------
 
         db.execSQL(SQL_CREATE_TABLE_SOUND);
         ContentValues cv = new ContentValues();
         cv.put(COL_DIST, 123.25);
-        cv.put(COL_NAME, "yuriyuripps");
+        cv.put(COL_NAME, "yyyyyyyy");
         db.insert(SOUND_TABLE, null, cv);
-
-        cv = new ContentValues();
-        cv.put(COL_DIST, 124.25);
-        cv.put(COL_NAME, "yuriyuripps");
-        db.insert(SOUND_TABLE, null, cv);
-
-        cv = new ContentValues();
-        cv.put(COL_DIST, 128.21);
-        cv.put(COL_NAME, "yuriyuripps");
-        db.insert(SOUND_TABLE, null, cv);
-
-        cv = new ContentValues();
-        cv.put(COL_DIST, 132.24);
-        cv.put(COL_NAME, "yuriyuripps");
-        db.insert(SOUND_TABLE, null, cv);
-
-        cv = new ContentValues();
-        cv.put(COL_DIST, 129.54);
-        cv.put(COL_NAME, "yuriyuripps");
-        db.insert(SOUND_TABLE, null, cv);
-
-        cv = new ContentValues();
-        cv.put(COL_DIST, 129.54);
-        cv.put(COL_NAME, "yuriyuripps");
-        db.insert(SOUND_TABLE, null, cv);
-
-
-        cv = new ContentValues();
-        cv.put(COL_DIST, 129.54);
-        cv.put(COL_NAME, "yuriyuripps");
-        db.insert(SOUND_TABLE, null, cv);
+//
+//        cv = new ContentValues();
+//        cv.put(COL_DIST, 124.25);
+//        cv.put(COL_NAME, "yuriyuripps");
+//        db.insert(SOUND_TABLE, null, cv);
+//
+//        cv = new ContentValues();
+//        cv.put(COL_DIST, 128.21);
+//        cv.put(COL_NAME, "yuriyuripps");
+//        db.insert(SOUND_TABLE, null, cv);
+//
+//        cv = new ContentValues();
+//        cv.put(COL_DIST, 132.24);
+//        cv.put(COL_NAME, "yuriyuripps");
+//        db.insert(SOUND_TABLE, null, cv);
+//
+//        cv = new ContentValues();
+//        cv.put(COL_DIST, 129.54);
+//        cv.put(COL_NAME, "yuriyuripps");
+//        db.insert(SOUND_TABLE, null, cv);
+//
+//        cv = new ContentValues();
+//        cv.put(COL_DIST, 129.54);
+//        cv.put(COL_NAME, "yuriyuripps");
+//        db.insert(SOUND_TABLE, null, cv);
+//
+//
+//        cv = new ContentValues();
+//        cv.put(COL_DIST, 129.54);
+//        cv.put(COL_NAME, "yuriyuripps");
+//        db.insert(SOUND_TABLE, null, cv);
 
 
 

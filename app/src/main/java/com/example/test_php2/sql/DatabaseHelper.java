@@ -29,8 +29,8 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
     private static final String COLUMN_NAME = "user_name";
 
     private static final String TABLE_NGROK = "ng";
-    private static final String COLUMN_NG_ID = "user_id";
-    private static final String COLUMN_NG_PATH = "user_path";
+    private static final String COLUMN_NG_ID = "ng_id";
+    private static final String COLUMN_NG_PATH = "ng_path";
 
 
     private String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_USER + "("
@@ -60,7 +60,11 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db){
         db.execSQL(CREATE_USER_TABLE);
         db.execSQL(CREATE_RECENT_TABLE);
+
         db.execSQL(CREATE_NGROK_TABLE);
+        ContentValues ng = new ContentValues();
+        ng.put(COLUMN_NG_PATH, "http://197c3088.ngrok.io");
+        db.insert(TABLE_NGROK, null, ng);
     }
 
 
@@ -77,7 +81,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_USER_NAME, user.getName());
-        values.put(COLUMN_USER_EMAIL, user.getEmail());
+//        values.put(COLUMN_USER_EMAIL, user.getEmail());
         values.put(COLUMN_USER_PASSWORD, user.getPassword());
 
         db.insert(TABLE_USER, null, values);
@@ -99,6 +103,10 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
         db.insert(TABLE_NGROK, null, values);
         db.close();
     }
+
+
+
+
 
 
 
@@ -179,4 +187,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
         }
         return false;
     }
+
+    //-----------------------------------------------------------------------------------------//
+
 }

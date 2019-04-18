@@ -264,32 +264,5 @@ public class record extends AppCompatActivity implements View.OnClickListener{
 
         }
     }
-
-
-
-//    public void process(){
-//        Ion.with(this)
-//                .load("http://38d5be06.ngrok.io/pro-android/upload/sound/test.php")
-//                .asString()
-//                .setCallback(new FutureCallback<String>() {
-//                    @Override
-//                    public void onCompleted(Exception e, String result) {
-//                        //int dist = Integer.parseInt(result);
-//                        /*if(dist >= 130) {
-//                            //Toast.makeText(getBaseContext(), "Different", Toast.LENGTH_LONG).show();
-//                            if(dist >= 135){
-//                                Toast.makeText(getBaseContext(), "Different", Toast.LENGTH_LONG).show();
-//                            }else {
-//                                Toast.makeText(getBaseContext(), "Same", Toast.LENGTH_LONG).show();
-//                            }
-//                        }else {
-//                            Toast.makeText(getBaseContext(), "Same", Toast.LENGTH_LONG).show();
-//
-//                        }*/
-//                        Toast.makeText(getBaseContext(), result, Toast.LENGTH_LONG).show();
-//
-//                    }
-//                });
-//    }
 }
 
