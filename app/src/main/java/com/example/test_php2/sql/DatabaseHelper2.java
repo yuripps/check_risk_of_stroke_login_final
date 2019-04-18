@@ -119,10 +119,10 @@ public class DatabaseHelper2  extends SQLiteOpenHelper {
         //-------------------------------------------------------------
 
         db.execSQL(SQL_CREATE_TABLE_SOUND);
-        ContentValues cv = new ContentValues();
-        cv.put(COL_DIST, 123.25);
-        cv.put(COL_NAME, "yyyyyyyy");
-        db.insert(SOUND_TABLE, null, cv);
+//        ContentValues cv = new ContentValues();
+//        cv.put(COL_DIST, 123.25);
+//        cv.put(COL_NAME, "yyyyyyyy");
+//        db.insert(SOUND_TABLE, null, cv);
 //
 //        cv = new ContentValues();
 //        cv.put(COL_DIST, 124.25);

@@ -103,7 +103,7 @@ public class show_pic_smile extends PermissionActivity {
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();
         String path = (Environment.getExternalStorageDirectory()+"/"+"smile_"+formatter.format(now)+".jpg");
-        String url = db1.getNg()+"/pro-android/upload/smile/upload.php";
+        String url = db1.getNg()+"/pro-android/smile.php";
         Ion.with(this)
                 .load(url)
                 .setMultipartFile("upload_file", new File(path))
@@ -142,7 +142,7 @@ public class show_pic_smile extends PermissionActivity {
     DatabaseHelper db1 = new DatabaseHelper(activity);
 
     public void process(){
-        String url = db1.getNg()+"/pro-android/upload/smile/test.php";
+        String url = db1.getNg()+"/pro-android/smile/test.php";
         Ion.with(this)
                 .load(url)
                 .asString()
@@ -181,4 +181,3 @@ public class show_pic_smile extends PermissionActivity {
 
 
 }
-

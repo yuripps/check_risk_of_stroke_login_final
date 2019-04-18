@@ -29,6 +29,7 @@ import java.util.Locale;
 public class first_sound extends AppCompatActivity implements View.OnClickListener{
     private final AppCompatActivity activity = first_sound.this;
     static int visitCount = 0;
+    static int visitNext = 0;
 
     public static final int RECORD_AUDIO = 0;
     private MediaRecorder myAudioRecorder;
@@ -103,8 +104,10 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
         try {
             SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
             Date now = new Date();
+            visitCount++;
+            String count = Integer.toString(visitCount);
             //final File file = new File(Environment.getExternalStorageDirectory()+"/"+"arm_"+formatter.format(now)+".jpg");
-            output = Environment.getExternalStorageDirectory()+"/"+"record_"+formatter.format(now)+".wav";
+            output = Environment.getExternalStorageDirectory()+"/"+count+".wav";
             myAudioRecorder = new MediaRecorder();
             myAudioRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
             myAudioRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
@@ -128,7 +131,7 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
         Toast.makeText(getApplicationContext(), "Recording started", Toast.LENGTH_SHORT).show();
     }
     public void stop(View view){
-
+//        visitCount++;
         myAudioRecorder.stop();
         myAudioRecorder.release();
         myAudioRecorder = null;
@@ -156,21 +159,14 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
         next.setEnabled(true);
         Toast.makeText(getApplicationContext(), "Playing audio", Toast.LENGTH_SHORT).show();
     }
-
-    public void rename(){
-        String name = "1.wav";
-        File sr = Environment.getExternalStorageDirectory();
-        File from = new File(sr,name);
-        File to = new File(sr,db1.getName()+".wav");
-        from.renameTo(to);
-    }
-
     public void up_sound(View view){
+        renameSend();
         Toast.makeText(getBaseContext(), "อัพโหลดไฟล์เสียง", Toast.LENGTH_LONG).show();
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();
-        String path = Environment.getExternalStorageDirectory()+"/"+"record_"+formatter.format(now)+".wav";;
-        String url = db1.getNg()+"/pro-android/upload/sound/upload.php";
+        String count = Integer.toString(visitNext);
+        String path = Environment.getExternalStorageDirectory()+"/"+count+".wav";
+        String url = db1.getNg()+"/pro-android/sound.php";
         Ion.with(this)
                 .load(url)
                 .setMultipartFile("upload_file", new File(path))
@@ -178,11 +174,9 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
-                        visitCount++;
-                        if(visitCount > 4){
-                            rename();
+                        if(visitNext > 4){
+                            renameone();
                             process();
-
                         }
 
                     }
@@ -194,7 +188,7 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
     DatabaseHelper db1 = new DatabaseHelper(activity);
 
     public void process() {
-        String url = db1.getNg()+"/pro-android/upload/sound/firstsound.php";
+        String url = db1.getNg()+"/pro-android/sound/first_test.php";
         Ion.with(this)
                 .load(url)
                 .asString()
@@ -212,5 +206,27 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
                 });
 
 
+    }
+
+    public void renameSend(){
+        visitNext++;
+        SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
+        Date now = new Date();
+        String count_st = Integer.toString(visitCount);
+        String name = count_st+".wav";
+        File sr = Environment.getExternalStorageDirectory();
+        String count = Integer.toString(visitNext);
+        File from = new File(sr,name);
+        File to = new File(sr,count+".wav");
+        from.renameTo(to);
+    }
+
+    public void renameone(){
+        String name = "1.wav";
+        File sr = Environment.getExternalStorageDirectory();
+        String count = Integer.toString(visitNext);
+        File from = new File(sr,name);
+        File to = new File(sr,db1.getName()+".wav");
+        from.renameTo(to);
     }
 }

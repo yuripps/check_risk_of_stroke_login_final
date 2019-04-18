@@ -81,7 +81,6 @@ public class record extends AppCompatActivity implements View.OnClickListener{
                 }
                 break;
             case R.id.button4:
-
                 up_sound1(v);
                 break;
             default:
@@ -158,6 +157,23 @@ public class record extends AppCompatActivity implements View.OnClickListener{
         next.setEnabled(true);
         Toast.makeText(getApplicationContext(), "Playing audio", Toast.LENGTH_SHORT).show();
     }
+//    public void up_sound(View view){
+//        Toast.makeText(getBaseContext(), "อัพโหลดไฟล์เสียง", Toast.LENGTH_LONG).show();
+//        SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
+//        Date now = new Date();
+//        String path = Environment.getExternalStorageDirectory()+"/"+"record_"+formatter.format(now)+".wav";
+//        String url = db1.getNg()+"/pro-android/sound.php";
+//        Ion.with(this)
+//                .load(url)
+//                .setMultipartFile("upload_file", new File(path))
+//                .asString()
+//                .setCallback(new FutureCallback<String>() {
+//                    @Override
+//                    public void onCompleted(Exception e, String result) {
+//                        process();
+//                    }
+//                });
+//    }
 
     public void rename(){
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
@@ -175,7 +191,7 @@ public class record extends AppCompatActivity implements View.OnClickListener{
         Date now = new Date();
         String name = (Environment.getExternalStorageDirectory()+"/"+db1.getName()+".wav");
         String path = (name);
-        String url = db1.getNg()+"/pro-android/upload/sound/upload1.php";
+        String url = db1.getNg()+"/pro-android/sound/upload1.php";
         Ion.with(this)
                 .load(url)
                 .setMultipartFile("upload_file", new File(name))
@@ -196,7 +212,7 @@ public class record extends AppCompatActivity implements View.OnClickListener{
         Date now = new Date();
         String name = (Environment.getExternalStorageDirectory()+"/"+"record_"+formatter.format(now)+".wav");
         String path = (name);
-        String url = db1.getNg()+"/pro-android/upload/sound/upload2.php";
+        String url = db1.getNg()+"/pro-android/sound/upload2.php";
         Ion.with(this)
                 .load(url)
                 .setMultipartFile("upload_file", new File(name))
@@ -211,13 +227,14 @@ public class record extends AppCompatActivity implements View.OnClickListener{
     }
 
 
+
     DatabaseHelper2 db = new DatabaseHelper2(activity);
     DatabaseHelper db1 = new DatabaseHelper(activity);
 
 
 
     public void process(){
-        String url = db1.getNg()+"/pro-android/upload/sound/test.php";
+        String url = db1.getNg()+"/pro-android/sound/test.php";
         Ion.with(this)
                 .load(url)
                 .asString()
@@ -236,7 +253,6 @@ public class record extends AppCompatActivity implements View.OnClickListener{
                             startActivity(intent2);
                         }
 
-//                        db.updateDistRc(dist,"yuriyuripps");
                     }
                 });
 
@@ -264,5 +280,31 @@ public class record extends AppCompatActivity implements View.OnClickListener{
 
         }
     }
-}
 
+
+
+//    public void process(){
+//        Ion.with(this)
+//                .load("http://38d5be06.ngrok.io/pro-android/upload/sound/test.php")
+//                .asString()
+//                .setCallback(new FutureCallback<String>() {
+//                    @Override
+//                    public void onCompleted(Exception e, String result) {
+//                        //int dist = Integer.parseInt(result);
+//                        /*if(dist >= 130) {
+//                            //Toast.makeText(getBaseContext(), "Different", Toast.LENGTH_LONG).show();
+//                            if(dist >= 135){
+//                                Toast.makeText(getBaseContext(), "Different", Toast.LENGTH_LONG).show();
+//                            }else {
+//                                Toast.makeText(getBaseContext(), "Same", Toast.LENGTH_LONG).show();
+//                            }
+//                        }else {
+//                            Toast.makeText(getBaseContext(), "Same", Toast.LENGTH_LONG).show();
+//
+//                        }*/
+//                        Toast.makeText(getBaseContext(), result, Toast.LENGTH_LONG).show();
+//
+//                    }
+//                });
+//    }
+}
