@@ -96,8 +96,9 @@ public class first_show_pic_arm extends AppCompatActivity {
         String count_st = Integer.toString(visitCount);
         String path = (Environment.getExternalStorageDirectory()+"/"+count_st+".jpg");
         //visitCount++;
+        String url = db1.getNg()+"/pro-android/upload/arm/upload.php";
         Ion.with(this)
-                .load("http://ea0fd6ad.ngrok.io/pro-android/upload/arm/upload.php")
+                .load(url)
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -146,8 +147,9 @@ public class first_show_pic_arm extends AppCompatActivity {
     DatabaseHelper2 db2 = new DatabaseHelper2(activity);
     DatabaseHelper db1 = new DatabaseHelper(activity);
     public void process() {
+        String url = db1.getNg()+"/pro-android/upload/arm/firstarm.php";
         Ion.with(this)
-                .load("http://ea0fd6ad.ngrok.io/pro-android/upload/arm/firstarm.php")
+                .load(url)
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override

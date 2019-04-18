@@ -170,8 +170,9 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy", Locale.KOREA);
         Date now = new Date();
         String path = Environment.getExternalStorageDirectory()+"/"+"record_"+formatter.format(now)+".wav";;
+        String url = db1.getNg()+"/pro-android/upload/sound/upload.php";
         Ion.with(this)
-                .load("http://ea0fd6ad.ngrok.io/pro-android/upload/sound/upload.php")
+                .load(url)
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -193,8 +194,9 @@ public class first_sound extends AppCompatActivity implements View.OnClickListen
     DatabaseHelper db1 = new DatabaseHelper(activity);
 
     public void process() {
+        String url = db1.getNg()+"/pro-android/upload/sound/firstsound.php";
         Ion.with(this)
-                .load("http://ea0fd6ad.ngrok.io/pro-android/upload/sound/firstsound.php")
+                .load(url)
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override

@@ -175,8 +175,9 @@ public class record extends AppCompatActivity implements View.OnClickListener{
         Date now = new Date();
         String name = (Environment.getExternalStorageDirectory()+"/"+db1.getName()+".wav");
         String path = (name);
+        String url = db1.getNg()+"/pro-android/upload/sound/upload1.php";
         Ion.with(this)
-                .load("http://ea0fd6ad.ngrok.io/pro-android/upload/sound/upload1.php")
+                .load(url)
                 .setMultipartFile("upload_file", new File(name))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -195,8 +196,9 @@ public class record extends AppCompatActivity implements View.OnClickListener{
         Date now = new Date();
         String name = (Environment.getExternalStorageDirectory()+"/"+"record_"+formatter.format(now)+".wav");
         String path = (name);
+        String url = db1.getNg()+"/pro-android/upload/sound/upload2.php";
         Ion.with(this)
-                .load("http://ea0fd6ad.ngrok.io/pro-android/upload/sound/upload2.php")
+                .load(url)
                 .setMultipartFile("upload_file", new File(name))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -215,8 +217,9 @@ public class record extends AppCompatActivity implements View.OnClickListener{
 
 
     public void process(){
+        String url = db1.getNg()+"/pro-android/upload/sound/test.php";
         Ion.with(this)
-                .load("http://ea0fd6ad.ngrok.io/pro-android/sound/test.php")
+                .load(url)
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override

@@ -100,14 +100,25 @@ public class DatabaseHelper  extends SQLiteOpenHelper{
         db.close();
     }
 
+
+
     public String getName(){
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursor = db.rawQuery("SELECT " + COLUMN_NAME
                 + " FROM " + TABLE_RECENT  , null);
-//        cursor.moveToPosition(1);
         cursor.moveToLast();
         String cr = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
+        return cr;
+    }
+
+    public String getNg(){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT " + COLUMN_NG_PATH
+                + " FROM " + TABLE_NGROK  , null);
+        cursor.moveToLast();
+        String cr = cursor.getString(cursor.getColumnIndex(COLUMN_NG_PATH));
         return cr;
     }
 
